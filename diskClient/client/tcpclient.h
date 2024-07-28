@@ -2,9 +2,10 @@
 #define TCPCLIENT_H
 
 #include <winsock2.h>
-#include "kernel/tcpkernel.h"
 #include <windows.h>
 #include "inet.h"
+#include<stdio.h>
+#include<stdlib.h>
 
 class tcpclient : public Inet
 {

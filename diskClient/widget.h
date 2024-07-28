@@ -2,6 +2,9 @@
 #define WIDGET_H
 
 #include <QWidget>
+#include "kernel/tcpkernel.h"
+#include <QDebug>
+#include "login.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,5 +22,7 @@ public:
 
 private:
     Ui::Widget *ui;
+    iKernel* m_pkernel;
+    login *m_plogin;
 };
 #endif // WIDGET_H

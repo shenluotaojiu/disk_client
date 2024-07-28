@@ -112,7 +112,7 @@ void tcpclient::recvData()
                 offset += nReadNum;
             }
             // todo
-            TCPKernel::getKernel()->dealData(sockclient,pszbuf);
+          //  TCPKernel::getKernel()->dealData(sockclient,pszbuf);
 
             delete[] pszbuf;
             pszbuf = nullptr;
