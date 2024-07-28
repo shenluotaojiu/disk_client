@@ -1,7 +1,7 @@
 #include "tcpkernel.h"
 
 _BEGIN_PROTOCOL_MAP
-
+PM(_default_register_rs,&TCPKernel::registerrs)
 _END_PROTOCOL_MAP
 
 TCPKernel::TCPKernel(QObject *parent)
@@ -12,6 +12,14 @@ TCPKernel::TCPKernel(QObject *parent)
 TCPKernel::~TCPKernel()
 {
     delete m_pNet;
+}
+
+void TCPKernel::registerrs(char *szbuf)
+{
+    STRU_REGISTER_RS* srs = (STRU_REGISTER_RS*)szbuf;
+    char result = srs->m_szResult;
+    // 需要把数据传给widget界面
+    emit signals_kernel_registerrs(result);
 }
 
 bool TCPKernel::open()
@@ -30,29 +38,25 @@ void TCPKernel::close()
     m_pNet->unInitNetWork();
 }
 
-void TCPKernel::dealData(SOCKET sock, char *szbuf)
+void TCPKernel::dealData(char *szbuf)
 {
-    int count = 0;
+    // 包映射表
+    int count=0;
     while(1)
     {
         if(g_PMEntries[count].m_nType == *szbuf)
         {
-            (this->*g_PMEntries[count].m_pFun)(sock,szbuf);
+            (this->*g_PMEntries[count].m_pFun)(szbuf);
             break;
         }
-        else if(g_PMEntries[count].m_nType == 0
-             && g_PMEntries[count].m_nType == 0)
+        else if(g_PMEntries[count].m_nType == 0 && g_PMEntries[count].m_pFun == 0)
             break;
+
         count++;
     }
 }
 
-void TCPKernel::sendData(SOCKET sock, char *szbuf)
+void TCPKernel::sendData(char *szbuf,int nlen)
 {
-
+    m_pNet->sendData(szbuf,nlen);
 }
-
-// iKernel *TCPKernel::getKernel()
-// {
-//     return m_pKernel;
-// }

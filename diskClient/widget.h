@@ -5,6 +5,8 @@
 #include "kernel/tcpkernel.h"
 #include <QDebug>
 #include "login.h"
+#include <QObject>
+#include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,8 +22,12 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+public slots:
+    void slots_widget_registerrs(char result);
+
 private:
     Ui::Widget *ui;
+public:
     iKernel* m_pkernel;
     login *m_plogin;
 };

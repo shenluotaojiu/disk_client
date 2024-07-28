@@ -32,3 +32,6 @@ include(kernel/kernel.pri)
 
 DISTFILES += \
     ../README.md
+
+RESOURCES += \
+    img.qrc

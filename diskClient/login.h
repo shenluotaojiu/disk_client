@@ -2,6 +2,9 @@
 #define LOGIN_H
 
 #include <QWidget>
+#include <QString>
+#include "Packdef.h"
+#include "kernel/tcpkernel.h"
 
 namespace Ui {
 class login;
@@ -14,12 +17,14 @@ class login : public QWidget
 public:
     explicit login(QWidget *parent = nullptr);
     ~login();
+    void setKernel(iKernel* m_pkernel);
 
 private slots:
     void on_pushButton_register_clicked();
 
 private:
     Ui::login *ui;
+    iKernel *m_pkernel;
 };
 
 #endif // LOGIN_H

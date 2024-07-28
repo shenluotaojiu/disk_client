@@ -1,4 +1,5 @@
 #include "tcpclient.h"
+#include "kernel/tcpkernel.h"
 
 tcpclient::tcpclient()
 {
@@ -111,12 +112,14 @@ void tcpclient::recvData()
                 nPackSize -= nReadNum;
                 offset += nReadNum;
             }
-            // todo
-          //  TCPKernel::getKernel()->dealData(sockclient,pszbuf);
-
-            delete[] pszbuf;
-            pszbuf = nullptr;
         }
+
+        // todo
+        TCPKernel m_kernel;
+        m_kernel.dealData(pszbuf);
+
+        delete[] pszbuf;
+        pszbuf = nullptr;
     }
 }
 

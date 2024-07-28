@@ -12,8 +12,8 @@ public:
 public:
     virtual bool open() = 0;
     virtual void close() = 0;
-    virtual void dealData(SOCKET sock,char* szbuf) = 0;
-    virtual void sendData(SOCKET sock,char* szbuf) = 0;
+    virtual void dealData(char* szbuf) = 0;
+    virtual void sendData(char* szbuf, int nlen) = 0;
     void set_inet_parameter(const char* ip,unsigned short port)
     {
         this->ip = ip;
