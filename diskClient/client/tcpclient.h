@@ -6,6 +6,7 @@
 #include "inet.h"
 #include<stdio.h>
 #include<stdlib.h>
+#include"../kernel/ikernel.h"
 
 class tcpclient : public Inet
 {
@@ -13,8 +14,9 @@ private:
     SOCKET sockclient;
     HANDLE m_hthread;
     bool m_bFlagQuit;
+    iKernel* m_pkernel;
 public:
-    tcpclient();
+    tcpclient(iKernel* m_pkernel);
     ~tcpclient();
 
     bool initNetWork(const char* szip = "127.0.0.1",unsigned short nport = 1234);

@@ -23,7 +23,9 @@ public:
     ~Widget();
 
 public slots:
-    void slots_widget_registerrs(char result);
+    void slots_widget_registerrs(STRU_REGISTER_RS* psrr);
+    void slots_widget_loginrs(STRU_LOGIN_RS* pslr);
+    void slots_widget_getfilers(STRU_GETFILELIST_RS* psgr);
 
 private:
     Ui::Widget *ui;

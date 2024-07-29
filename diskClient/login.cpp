@@ -35,3 +35,13 @@ void login::on_pushButton_register_clicked()
 
 }
 
+void login::on_pushButton_login_clicked()
+{
+    QString qstr_ac = ui->lineEdit_login_account->text();
+    QString qstr_pw = ui->lineEdit_login_pw->text();
+    STRU_LOGIN_RQ slr;
+    strcpy(slr.m_szName,qstr_ac.toStdString().c_str());
+    strcpy(slr.m_szPassword,qstr_pw.toStdString().c_str());
+    m_pkernel->sendData((char*)&slr,sizeof(slr));
+}
+

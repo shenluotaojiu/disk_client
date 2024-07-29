@@ -1,11 +1,12 @@
 #include "tcpclient.h"
 #include "kernel/tcpkernel.h"
 
-tcpclient::tcpclient()
+tcpclient::tcpclient(iKernel* m_pkernel)
 {
     sockclient = 0;
     m_hthread = nullptr;
     m_bFlagQuit = true;
+    this->m_pkernel = m_pkernel;
 }
 
 tcpclient::~tcpclient()
@@ -115,8 +116,9 @@ void tcpclient::recvData()
         }
 
         // todo
-        TCPKernel m_kernel;
-        m_kernel.dealData(pszbuf);
+        //TCPKernel m_kernel;
+        //m_kernel.dealDateA
+        m_pkernel->dealData(pszbuf);
 
         delete[] pszbuf;
         pszbuf = nullptr;

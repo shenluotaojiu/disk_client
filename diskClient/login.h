@@ -5,7 +5,7 @@
 #include <QString>
 #include "Packdef.h"
 #include "kernel/tcpkernel.h"
-
+#include <QMessageBox>
 namespace Ui {
 class login;
 }
@@ -21,6 +21,11 @@ public:
 
 private slots:
     void on_pushButton_register_clicked();
+
+
+
+
+    void on_pushButton_login_clicked();
 
 private:
     Ui::login *ui;

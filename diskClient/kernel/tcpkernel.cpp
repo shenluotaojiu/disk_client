@@ -1,25 +1,38 @@
 #include "tcpkernel.h"
 
-_BEGIN_PROTOCOL_MAP
-PM(_default_register_rs,&TCPKernel::registerrs)
-_END_PROTOCOL_MAP
-
 TCPKernel::TCPKernel(QObject *parent)
+    : QObject{parent}
 {
-    m_pNet = new tcpclient();
+    m_pNet = new tcpclient(this);
 }
 
-TCPKernel::~TCPKernel()
+_BEGIN_PROTOCOL_MAP
+PM(_default_register_rs,&TCPKernel::registerrs)
+PM(_default_login_rs,&TCPKernel::loginrs)
+PM(_default_getfilelist_rs,&TCPKernel::getfilelistrs)
+
+_END_PROTOCOL_MAP
+
+
+    TCPKernel::~TCPKernel()
 {
     delete m_pNet;
 }
 
 void TCPKernel::registerrs(char *szbuf)
 {
-    STRU_REGISTER_RS* srs = (STRU_REGISTER_RS*)szbuf;
-    char result = srs->m_szResult;
     // 需要把数据传给widget界面
-    emit signals_kernel_registerrs(result);
+    emit signals_kernel_registerrs((STRU_REGISTER_RS*)szbuf);
+}
+
+void TCPKernel::loginrs(char *szbuf)
+{
+    emit signals_kernel_loginrs((STRU_LOGIN_RS*)szbuf);
+}
+
+void TCPKernel::getfilelistrs(char *szbuf)
+{
+    emit signals_kernel_getfilelistrs((STRU_GETFILELIST_RS*)szbuf);
 }
 
 bool TCPKernel::open()
@@ -60,3 +73,4 @@ void TCPKernel::sendData(char *szbuf,int nlen)
 {
     m_pNet->sendData(szbuf,nlen);
 }
+

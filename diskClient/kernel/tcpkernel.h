@@ -1,5 +1,6 @@
 #ifndef TCPKERNEL_H
 #define TCPKERNEL_H
+
 #include <QObject>
 #include "ikernel.h"
 #include "../client/tcpclient.h"
@@ -15,7 +16,7 @@ struct MyProtocolMap
 };
 
 
-class TCPKernel :public QObject, public iKernel
+class TCPKernel : public QObject, public iKernel
 {
     Q_OBJECT
 public:
@@ -23,10 +24,13 @@ public:
     ~TCPKernel();
 
     void registerrs(char *szbuf);
+    void loginrs(char *szbuf);
+    void getfilelistrs(char *szbuf);
 
 signals:        //信号
-    void signals_kernel_registerrs(char result);
-
+    void signals_kernel_registerrs(STRU_REGISTER_RS*);
+    void signals_kernel_loginrs(STRU_LOGIN_RS*);
+    void signals_kernel_getfilelistrs(STRU_GETFILELIST_RS*);
 
 public:
     virtual bool open();
@@ -40,6 +44,5 @@ private:
 
 
 };
-
 
 #endif // TCPKERNEL_H

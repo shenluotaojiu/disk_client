@@ -7,6 +7,7 @@ class iKernel
 {
 public:
     iKernel() = default;
+
     virtual ~iKernel() = default;
 
 public:
