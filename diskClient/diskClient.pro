@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     login.cpp \
     main.cpp \
+    md5.cpp \
     widget.cpp
 
 HEADERS += \
     Packdef.h \
     login.h \
+    md5.h \
     widget.h
 
 FORMS += \

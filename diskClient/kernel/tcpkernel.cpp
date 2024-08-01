@@ -10,6 +10,7 @@ _BEGIN_PROTOCOL_MAP
 PM(_default_register_rs,&TCPKernel::registerrs)
 PM(_default_login_rs,&TCPKernel::loginrs)
 PM(_default_getfilelist_rs,&TCPKernel::getfilelistrs)
+PM(_default_upload_fileinfo_rs,&TCPKernel::uploadinfors)
 
 _END_PROTOCOL_MAP
 
@@ -33,6 +34,11 @@ void TCPKernel::loginrs(char *szbuf)
 void TCPKernel::getfilelistrs(char *szbuf)
 {
     emit signals_kernel_getfilelistrs((STRU_GETFILELIST_RS*)szbuf);
+}
+
+void TCPKernel::uploadinfors(char *szbuf)
+{
+    emit signals_kernel_uploadinfors((STRU_UPLOADFILEINFO_RS*)szbuf);
 }
 
 bool TCPKernel::open()
