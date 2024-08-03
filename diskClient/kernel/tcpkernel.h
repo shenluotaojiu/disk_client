@@ -27,12 +27,16 @@ public:
     void loginrs(char *szbuf);
     void getfilelistrs(char *szbuf);
     void uploadinfors(char *szbuf);
+    void downloadfilers(char *szbuf);
+    void downloadblockrs(char *szbuf);
 
 signals:        //信号
     void signals_kernel_registerrs(STRU_REGISTER_RS*);
     void signals_kernel_loginrs(STRU_LOGIN_RS*);
     void signals_kernel_getfilelistrs(STRU_GETFILELIST_RS*);
     void signals_kernel_uploadinfors(STRU_UPLOADFILEINFO_RS*);
+    void signals_kernel_downloadfilers(STRU_DOWNLOADFILE_RS*);
+    void signals_kernel_downloadblockrs(STRU_DOWNLOADBLOCK_RS*);
 
 public:
     virtual bool open();

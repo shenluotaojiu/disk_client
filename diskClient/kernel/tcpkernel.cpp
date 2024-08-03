@@ -11,6 +11,8 @@ PM(_default_register_rs,&TCPKernel::registerrs)
 PM(_default_login_rs,&TCPKernel::loginrs)
 PM(_default_getfilelist_rs,&TCPKernel::getfilelistrs)
 PM(_default_upload_fileinfo_rs,&TCPKernel::uploadinfors)
+PM(_default_download_fileinfo_rs,&TCPKernel::downloadfilers)
+PM(_default_download_fileblock_rs,&TCPKernel::downloadblockrs)
 
 _END_PROTOCOL_MAP
 
@@ -39,6 +41,16 @@ void TCPKernel::getfilelistrs(char *szbuf)
 void TCPKernel::uploadinfors(char *szbuf)
 {
     emit signals_kernel_uploadinfors((STRU_UPLOADFILEINFO_RS*)szbuf);
+}
+
+void TCPKernel::downloadfilers(char *szbuf)
+{
+    emit signals_kernel_downloadfilers((STRU_DOWNLOADFILE_RS*)szbuf);
+}
+
+void TCPKernel::downloadblockrs(char *szbuf)
+{
+    emit signals_kernel_downloadblockrs((STRU_DOWNLOADBLOCK_RS*)szbuf);
 }
 
 bool TCPKernel::open()

@@ -12,16 +12,19 @@ SOURCES += \
     login.cpp \
     main.cpp \
     md5.cpp \
+    progressbar.cpp \
     widget.cpp
 
 HEADERS += \
     Packdef.h \
     login.h \
     md5.h \
+    progressbar.h \
     widget.h
 
 FORMS += \
     login.ui \
+    progressbar.ui \
     widget.ui
 
 # Default rules for deployment.
@@ -31,6 +34,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 include(client/client.pri)
 include(kernel/kernel.pri)
+include(threadpool/threadpool.pri)
 
 DISTFILES += \
     ../README.md
