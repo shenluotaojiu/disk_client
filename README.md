@@ -1,7 +1,7 @@
 # 网盘文件
 这里是自写网盘的客户端  
 
-![image-20240803105733799](D:\code_practice\Web_disk\Client\mdimg\image-20240803105733799.png)
+![image-20240803105733799](mdimg\image-20240803105733799.png)
 
 ******
 ## 开发笔记
@@ -29,7 +29,7 @@ kernel只在ui下new一份。其他地方不会再new。如果kernel不一致，
 弄错  
 ![我累个惊天大错误](./mdimg/71af0f6f17eb83386950cb9a23a4f69a.png "我累个惊天大错误")  
 因为采用了网络模块采用了多线程线程，所以qt的第五个参数要更改为阻塞连接  
-![8e3f3cc387589868f554f4f0a8dacf34](D:\code_practice\Web_disk\Client\mdimg\8e3f3cc387589868f554f4f0a8dacf34.png)
+![8e3f3cc387589868f554f4f0a8dacf34](mdimg\8e3f3cc387589868f554f4f0a8dacf34.png)
 
 
 
@@ -54,7 +54,7 @@ kernel只在ui下new一份。其他地方不会再new。如果kernel不一致，
 
 通过``getExitingDirectory()``来选择一个目录打开并返回完整目录，如果是空，则提醒，并阻止下载。
 
-![image-20240803105559695](D:\code_practice\Web_disk\Client\mdimg\image-20240803105559695.png)
+![image-20240803105559695](mdimg\image-20240803105559695.png)
 
 如果非空，则与文件名组成	``filePath``为下载做准备。通过一个映射表，``f_id->fileinfo``，来校验偏移量以及下载块的大小，如果块大小总和等于文件大小，则停止接收。
 
@@ -75,5 +75,5 @@ kernel只在ui下new一份。其他地方不会再new。如果kernel不一致，
 
 客户端接收并写入本地。
 
-![具体流程](D:\code_practice\Web_disk\Client\mdimg\d8680048c400d930277df184c6da1c6.jpg "具体流程")
+![具体流程](mdimg\d8680048c400d930277df184c6da1c6.jpg "具体流程")
 
